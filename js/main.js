@@ -12,39 +12,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Обробка форми контактів
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Отримання даних форми
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData);
-        
-        // Тут можна додати код для відправки даних на сервер
-        console.log('Форма відправлена:', data);
-        
-        // Очищення форми
-        this.reset();
-        
-        // Показ повідомлення про успішну відправку
-        alert('Дякуємо за ваше повідомлення!');
-    });
-}
-
 // Фіксація хедера при прокрутці
 const header = document.querySelector('.header');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll <= 0) {
         header.classList.remove('scroll-up');
         return;
     }
-    
+
     if (currentScroll > lastScroll && !header.classList.contains('scroll-down')) {
         // Прокрутка вниз
         header.classList.remove('scroll-up');
@@ -54,13 +33,13 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scroll-down');
         header.classList.add('scroll-up');
     }
-    
+
     lastScroll = currentScroll;
 });
 
 document.addEventListener('DOMContentLoaded', function() {
     const viewport = document.querySelector('.slides_viewport');
-    
+
     if(!viewport) { return }
 
     const slides = document.querySelectorAll('.slide');
@@ -131,26 +110,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Init Slider Actions
     startAutoplay();
-}); 
+});
 
 // Init sandwich mobile menu item
 document.addEventListener('DOMContentLoaded', function() {
     const sandwich = document.querySelector('.sandwich');
-    
+
     if (!sandwich) { return; }
 
     sandwich.addEventListener('click', function() {
         this.classList.toggle('opened');
     });
-}); 
+});
 
 // FAQs
 document.addEventListener('DOMContentLoaded', function() {
-    const faqs = document.querySelectorAll('.faqs .faq'); 
+    const faqs = document.querySelectorAll('.faqs .faq');
 
     if (!faqs) { return; }
-    
-    for(var i = 0; i < faqs.length; i++) { 
+
+    for(var i = 0; i < faqs.length; i++) {
         let title = faqs[i].querySelector('h4');
         let expandCollapse = faqs[i].querySelector('.faq-expand-collapse');
 
@@ -160,4 +139,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
-}); 
+});
