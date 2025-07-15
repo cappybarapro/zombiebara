@@ -7,7 +7,7 @@
     <meta name="keywords" content="Cappybara, creators, authors, organizations, support, income, donations, content creators">
     <meta name="author" content="Cappybara">
     <meta name="robots" content="index, follow">
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mkardash.github.io/cpb/">
@@ -18,24 +18,24 @@
     <meta property="og:image:height" content="512">
     <meta property="og:site_name" content="Cappybara">
     <meta property="og:locale" content="en_GB">
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://mkardash.github.io/cpb/">
     <meta name="twitter:title" content="Cappybara - Support Creators and Earn Income">
     <meta name="twitter:description" content="A simple way for Authors, Creators, Organizations, and Services to earn support and income — all in one place.">
     <meta name="twitter:image" content="https://mkardash.github.io/cpb/images/og-image.jpg">
-    
+
     <!-- Instagram -->
     <meta property="og:type" content="profile">
     <meta property="og:profile:username" content="cappybara">
-    
+
     <!-- Additional SEO -->
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#2563eb">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    
+
     <title>Cappybara - A simple way for Authors, Creators, Organizations, and Services to earn support and income — all in one place.</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,6 +47,47 @@
     <link rel="shortcut icon" href="./favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="manifest" href="./site.webmanifest">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDpXjYJ0IY40xnhwdb2GUwP5aEsrFYdFOw",
+            authDomain: "cappybarapro.firebaseapp.com",
+            projectId: "cappybarapro",
+            storageBucket: "cappybarapro.firebasestorage.app",
+            messagingSenderId: "658925501828",
+            appId: "1:658925501828:web:ccbdbf10368d84f8c1f1d1"
+        };
+
+        // Initialize Firebase
+        let firebaseApp = initializeApp(firebaseConfig);
+
+        // Initialize Cloud Firestore and get a reference to the service
+        const fireStoreBD = getFirestore(firebaseApp);
+
+        // Init Form
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+
+            try {
+                const docRef = await addDoc(collection(fireStoreBD, "early_adopters"), {
+                email: email,
+                timestamp: new Date() // Optional: add a timestamp
+                });
+                console.log("Document written with ID: ", docRef.id);
+                // Clear form fields or show a success message
+                contactForm.reset();
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                // Handle error, e.g., show an error message
+            }
+        });
+</script>
 </head>
 <body>
     <header class="header">
@@ -174,7 +215,7 @@
 
         <section id="slogan" class="slogan">
             <div class="container">
-                <h2><span class="dark">UNLEASH YOUR 
+                <h2><span class="dark">UNLEASH YOUR
                     CREATIVITY</span> AND <span class="highlighted">TURN PASSION INTO</span> SUPPORT WITH EVERY STORY YOU SHARE</h2>
             </div>
         </section>
@@ -210,7 +251,7 @@
         </section>
 
         <br>
-        <section> 
+        <section>
             <div class="container flex-center">
                 <a class="primary-button wide" href="#contact">Explore More</a>
             </div>
@@ -351,19 +392,19 @@
             <div class="container">
                 <h3>Stay tuned</h3>
                 <p>Don’t miss a step in the journey of discovery with Cappybara. Join us as we uncover the hidden forces shaping a sustainable future and stay updated on every new initiative, story, and insight.</p>
-                <form class="contact-form">
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <label for="email">Your email</label>
                         <input type="email" id="email" name="email" placeholder="Type your email" required>
                     </div>
-                    <button class="primary-button" type="submit">Send</button>
+                    <button class="primary-button" id="submitBtn" type="submit">Send</button>
                 </form>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="footer-content"> 
+        <div class="footer-content">
             <div class="container">
                 <a href="./" class="logo">
                     <img src="./images/logo-bright.svg" alt="Cappybara - A simple way for Authors, Creators, Organizations, and Services to earn support and income — all in one place." title="Cappybara - - A simple way for Authors, Creators, Organizations, and Services to earn support and income — all in one place.">
@@ -389,4 +430,4 @@
 
     <script src="js/main.js"></script>
 </body>
-</html> 
+</html>
