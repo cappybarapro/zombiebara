@@ -81,10 +81,13 @@
                 });
                 console.log("Document written with ID: ", docRef.id);
                 // Clear form fields or show a success message
+
+                alert("Message sent! Thank you.");
                 contactForm.reset();
             } catch (e) {
                 console.error("Error adding document: ", e);
                 // Handle error, e.g., show an error message
+                alert("Error sending message: " + e);
             }
         });
 </script>
