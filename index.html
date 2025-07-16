@@ -47,55 +47,8 @@
     <link rel="shortcut icon" href="./favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="manifest" href="./site.webmanifest">
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-        import { getAuth } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js"
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDpXjYJ0IY40xnhwdb2GUwP5aEsrFYdFOw",
-            authDomain: "cappybarapro.firebaseapp.com",
-            projectId: "cappybarapro",
-            storageBucket: "cappybarapro.firebasestorage.app",
-            messagingSenderId: "658925501828",
-            appId: "1:658925501828:web:ccbdbf10368d84f8c1f1d1"
-        };
-
-        // Initialize Firebase
-        let firebaseApp = initializeApp(firebaseConfig);
-
-        // Auth
-        const auth = getAuth(firebaseApp);
-        
-        // Initialize Cloud Firestore and get a reference to the service
-        const fireStoreBD = getFirestore(firebaseApp);
-
-        // Init Form
-        const contactForm = document.getElementById('contactForm');
-        
-        
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const email = document.getElementById('email').value;
-
-            try {
-                const docRef = await addDoc(collection(fireStoreBD, "early_adopters"), {
-                email: email,
-                timestamp: new Date() // Optional: add a timestamp
-                });
-                console.log("Document written with ID: ", docRef.id);
-                // Clear form fields or show a success message
-
-                alert("Message sent! Thank you.");
-                contactForm.reset();
-            } catch (e) {
-                console.error("Error adding document: ", e);
-                // Handle error, e.g., show an error message
-                alert("Error sending message: " + e);
-            }
-        });
-</script>
+    <link rel="manifest" href="./site.webmanifest">
+    <script type="module" src="js/contacts.js"></script>
 </head>
 <body>
     <header class="header">
@@ -404,6 +357,7 @@
                     <div class="form-group">
                         <label for="email">Your email</label>
                         <input type="email" id="email" name="email" placeholder="Type your email" required>
+                        <input type="hidden" id="source" name="source" value="index">
                     </div>
                     <button class="primary-button" id="submitBtn" type="submit">Send</button>
                 </form>
