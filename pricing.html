@@ -11,7 +11,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mkardash.github.io/cpb/">
-    <meta property="og:title" content="Cappybara: Tips - Empower Creativity. Connect. Grow. Support.">
+    <meta property="og:title" content="Cappybara: Pricing - Empower Creativity. Connect. Grow. Support.">
     <meta property="og:description" content="A simple way for Authors, Creators, Organizations, and Services to earn support and income — all in one place.">
     <meta property="og:image" content="https://mkardash.github.io/cpb/images/og-image.jpg">
     <meta property="og:image:width" content="512">
@@ -36,7 +36,7 @@
     <meta name="mobile-web-app-capablee" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <title>Cappybara: Tips - Empower Creativity. Connect. Grow. Support.</title>
+    <title>Cappybara: Pricing - Empower Creativity. Connect. Grow. Support.</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,6 +47,7 @@
     <link rel="shortcut icon" href="./favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="manifest" href="./site.webmanifest">
+    <script type="module" src="js/contacts.js"></script>
 </head>
 <body>
     <header class="header">
@@ -286,12 +287,13 @@
             <div class="container">
                 <h3>Stay tuned</h3>
                 <p>Don’t miss a step in the journey of discovery with Cappybara. Join us as we uncover the hidden forces shaping a sustainable future and stay updated on every new initiative, story, and insight.</p>
-                <form class="contact-form">
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <label for="email">Your email</label>
                         <input type="email" id="email" name="email" placeholder="Type your email" required>
+                        <input type="hidden" id="source" name="source" value="pricing">
                     </div>
-                    <button class="primary-button" type="submit">Send</button>
+                    <button class="primary-button" id="submitBtn" type="submit">Send</button>
                 </form>
             </div>
         </section>
