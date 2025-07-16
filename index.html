@@ -50,6 +50,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js"
 
         const firebaseConfig = {
             apiKey: "AIzaSyDpXjYJ0IY40xnhwdb2GUwP5aEsrFYdFOw",
@@ -63,12 +64,16 @@
         // Initialize Firebase
         let firebaseApp = initializeApp(firebaseConfig);
 
+        // Auth
+        const auth = getAuth(firebaseApp);
+        
         // Initialize Cloud Firestore and get a reference to the service
         const fireStoreBD = getFirestore(firebaseApp);
 
         // Init Form
         const contactForm = document.getElementById('contactForm');
-
+        
+        
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
